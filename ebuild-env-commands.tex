@@ -38,7 +38,7 @@ The following commands must always be available in the ebuild environment:
 \t{failglob} option of bash is set in the global scope of ebuilds. If set, failed pattern matches
 during filename expansion result in an error when the ebuild is being sourced.
 
-\ChangeWhenAddingAnEAPI{6}
+\ChangeWhenAddingAnEAPI{7}
 \begin{centertable}{System commands for EAPIs}
     \label{tab:system-commands-table}
     \begin{tabular}{lll}
@@ -49,7 +49,7 @@ during filename expansion result in an error when the ebuild is being sourced.
       \midrule
       0, 1, 2, 3, 4     & Undefined & No  \\
       5                 & Yes       & No  \\
-      6                 & Yes       & Yes \\
+      6, 7              & Yes       & Yes \\
       \bottomrule
     \end{tabular}
 \end{centertable}
