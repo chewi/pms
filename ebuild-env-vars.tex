@@ -141,6 +141,11 @@ variable.
     Contains the path \t{\$\{SYSROOT\%/\}\$\{EPREFIX\}/} for convenience. See also the
     \t{EPREFIX} variable. Only for EAPIs listed in table~\ref{tab:offset-env-vars-table} as
     supporting \t{ESYSROOT}. \\
+\t{BROOT} &
+    All &
+    No &
+    \featurelabel{broot} The absolute path to the root directory containing build dependencies
+    satisfied by BDEPEND, typically executable build tools. This includes any applicable prefix. \\
 \t{T} &
     All &
     Partially\footnote{Consistent and preserved across a single connected sequence of install or
