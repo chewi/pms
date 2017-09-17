@@ -144,6 +144,13 @@ variable.
     for convenience.  See also the \t{EPREFIX} variable. Only for EAPIs listed
     in table~\ref{tab:offset-env-vars-table} as supporting \t{ESYSROOT}. The presence of a trailing
     slash EAPI-dependent as listed in table~\ref{tab:trailing-slash}. \\
+\t{BROOT} &
+    \t{src_*} &
+    No &
+    \featurelabel{broot} The absolute path to the root directory containing build dependencies
+    satisfied by BDEPEND, typically executable build tools. This includes any applicable offset
+    prefix. Only for EAPIs listed in table~\ref{tab:offset-env-vars-table} as supporting \t{BROOT}.
+    The presence of a trailing slash EAPI-dependent as listed in table~\ref{tab:trailing-slash}. \\
 \t{T} &
     All &
     Partially\footnote{Consistent and preserved across a single connected sequence of install or
@@ -253,19 +260,20 @@ variable.
 \ChangeWhenAddingAnEAPI{7}
 \begin{centertable}{EAPIs supporting various added env variables}
     \label{tab:added-env-vars-table}
-    \begin{tabular}{llllll}
+    \begin{tabular}{lllllll}
       \toprule
       \multicolumn{1}{c}{\textbf{EAPI}} &
       \multicolumn{1}{c}{\textbf{\t{MERGE_TYPE}?}} &
       \multicolumn{1}{P{6em}}{\textbf{\t{REPLACING_VERSIONS}?}} &
       \multicolumn{1}{P{6em}}{\textbf{\t{REPLACED_BY_VERSION}?}} &
       \multicolumn{1}{P{6em}}{\textbf{\t{EBUILD_PHASE_FUNC}?}} &
-      \multicolumn{1}{P{6em}}{\textbf{\t{SYSROOT}?}} \\
+      \multicolumn{1}{P{6em}}{\textbf{\t{SYSROOT}?}} &
+      \multicolumn{1}{P{6em}}{\textbf{\t{BROOT}?}} \\
       \midrule
-      0, 1, 2, 3        & No  & No  & No  & No  & No  \\
-      4                 & Yes & Yes & Yes & No  & No  \\
-      5, 6              & Yes & Yes & Yes & Yes & No  \\
-      7                 & Yes & Yes & Yes & Yes & Yes \\
+      0, 1, 2, 3        & No  & No  & No  & No  & No  & No  \\
+      4                 & Yes & Yes & Yes & No  & No  & No  \\
+      5, 6              & Yes & Yes & Yes & Yes & No  & No  \\
+      7                 & Yes & Yes & Yes & Yes & Yes & Yes \\
       \bottomrule
     \end{tabular}
 \end{centertable}
@@ -288,7 +296,7 @@ variable.
 \ChangeWhenAddingAnEAPI{7}
 \begin{centertable}{EAPIs supporting offset-prefix env variables}
     \label{tab:offset-env-vars-table}
-    \begin{tabular}{lllll}
+    \begin{tabular}{llllll}
       \toprule
       \multicolumn{1}{c}{\textbf{EAPI}} &
       \multicolumn{1}{c}{\textbf{\t{EPREFIX}?}} &
@@ -460,17 +468,18 @@ If the path specifies the system root directory, it will be empty.
 \ChangeWhenAddingAnEAPI{7}
 \begin{centertable}{Variables that always or never end with a trailing slash}
     \label{tab:trailing-slash}
-    \begin{tabular}{llll}
+    \begin{tabular}{lllll}
       \toprule
       \multicolumn{1}{c}{\textbf{EAPI}} &
-      \multicolumn{3}{c}{\textbf{Ends with a trailing slash?}} \\
+      \multicolumn{4}{c}{\textbf{Ends with a trailing slash?}} \\
       &
       \t{ROOT}, \t{EROOT} &
       \t{D}, \t{ED} &
-      \t{SYSROOT}, \t{ESYSROOT} \\
+      \t{SYSROOT}, \t{ESYSROOT} &
+      \t{BROOT} \\
       \midrule
-      0, 1, 2, 3, 4, 5, 6 & always & always & n/a    \\
-      7                   & never  & never  & never  \\
+      0, 1, 2, 3, 4, 5, 6 & always & always & n/a    & n/a    \\
+      7                   & never  & never  & never  & never  \\
       \bottomrule
     \end{tabular}
 \end{centertable}
