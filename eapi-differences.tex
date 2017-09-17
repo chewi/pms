@@ -41,6 +41,9 @@ of this document for a complete table of previous EAPIs.
 \bottomrule
 \endlastfoot
 
+\t{SYSROOT}, \t{ESYSROOT} & \compactfeatureref{sysroot} &
+    No & No & No & No & Yes \\
+
 GNU patch version & \compactfeatureref{gnu-patch} &
     Any & Any & Any & Any & 2.7 \\
 
@@ -404,6 +407,7 @@ EAPI 7 is EAPI 6 with the following changes:
 \item \t{ROOT}, \t{EROOT}, \t{D}, \t{ED} no longer end with a trailing slash,
     \featureref{trailing-slash}.
 \item \t{patch} is compatible with GNU patch 2.7, \featureref{gnu-patch}.
+\item \t{SYSROOT} and \t{ESYSROOT} added, \featureref{sysroot}.
 \end{compactitem}
 
 \ChangeWhenAddingAnEAPI{7}
