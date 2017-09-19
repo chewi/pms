@@ -14,7 +14,7 @@
       \t{pkg_pretend}, \t{pkg_setup}, \t{pkg_info}, \t{pkg_nofetch} &
           None (ebuilds can rely only on the packages in the system set) \\
       \t{src_unpack}, \t{src_prepare}, \t{src_configure}, \t{src_compile}, \t{src_test},
-          \t{src_install} & \t{DEPEND} \\
+          \t{src_install} & \t{DEPEND}, \t{BDEPEND} \\
       \t{pkg_preinst}, \t{pkg_postinst}, \t{pkg_prerm}, \t{pkg_postrm} &
           \t{RDEPEND} (unless the particular dependency results in a circular dependency, in which
           case it may be installed later) \\
@@ -33,6 +33,18 @@ There are three classes of dependencies supported by ebuilds:
     the results of an ebuild merging are treated as usable.
 \item Post dependencies (\t{PDEPEND}). These must be installed at some point before
     the package manager finishes the batch of installs.
+\end{compactitem}
+
+\featurelabel{bdepend} Additionally, in EAPIs listed in table~\ref{tab:depend-table}
+as supporting \t{BDEPEND}, the build dependencies are split into two subclasses:
+
+\begin{compactitem}
+\item Build dependencies that are binary compatible with the native build system
+    / CBUILD (\t{BDEPEND}). The ebuild is allowed to call binary executables
+    installed by this kind of dependency.
+\item Build dependencies that are binary compatible with the system being built
+    / CHOST (\t{DEPEND}). The ebuild must not execute binary executables installed
+    by this kind of dependency.
 \end{compactitem}
 
 Table~\ref{tab:phase-function-dependency-classes} lists dependencies which must be satisfied before
@@ -88,6 +100,20 @@ be surrounded on both sides by whitespace, except at the start and end of the st
 \end{compactitem}
 
 In particular, note that whitespace is not optional.
+
+\ChangeWhenAddingAnEAPI{7}
+\begin{centertable}{EAPIs supporting additional dependency types}
+    \label{tab:depend-table}
+    \begin{tabular}{ll}
+      \toprule
+      \multicolumn{1}{c}{\textbf{EAPI}} &
+      \multicolumn{1}{c}{\textbf{Supports \t{BDEPEND}?}} \\
+      \midrule
+      0, 1, 2, 3, 4, 5, 6 & No  \\
+      7                   & Yes \\
+      \bottomrule
+    \end{tabular}
+\end{centertable}
 
 \ChangeWhenAddingAnEAPI{7}
 \begin{centertable}{EAPIs supporting \t{SRC_URI} arrows}
