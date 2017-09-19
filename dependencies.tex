@@ -14,7 +14,7 @@
       \t{pkg_pretend}, \t{pkg_setup}, \t{pkg_info}, \t{pkg_nofetch} &
           None (ebuilds can rely only on the packages in the system set) \\
       \t{src_unpack}, \t{src_prepare}, \t{src_configure}, \t{src_compile}, \t{src_test},
-          \t{src_install} & \t{DEPEND} \\
+          \t{src_install} & \t{DEPEND}, \t{BDEPEND} \\
       \t{pkg_preinst}, \t{pkg_postinst}, \t{pkg_prerm}, \t{pkg_postrm} &
           \t{RDEPEND} (unless the particular dependency results in a circular dependency, in which
           case it may be installed later) \\
@@ -26,9 +26,13 @@
 There are three classes of dependencies supported by ebuilds:
 
 \begin{compactitem}
-\item Build dependencies (\t{DEPEND}). These must be installed and usable before any of
-    the ebuild \t{src_*} phase functions is executed. These may not be installed at all
-    if a binary package is being merged.
+\item CHOST build dependencies (\t{DEPEND}), typically headers and libraries. These
+    must be installed and usable before any of the ebuild \t{src_*} phase functions
+    is executed. These may not be installed at all if a binary package is being merged.
+\item \featurelabel{bdepend} CBUILD build dependencies (\t{BDEPEND}), typically
+    executable build tools. These must be installed and usable before any of the ebuild
+    \t{src_*} phase functions is executed. These may not be installed at all if a
+    binary package is being merged.
 \item Runtime dependencies (\t{RDEPEND}). These must be installed and usable before
     the results of an ebuild merging are treated as usable.
 \item Post dependencies (\t{PDEPEND}). These must be installed at some point before
