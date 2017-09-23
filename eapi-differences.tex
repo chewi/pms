@@ -187,8 +187,11 @@ Most utilities die & \compactfeatureref{die-on-failure} &
 \t{dohtml} & \compactfeatureref{banned-commands} &
     Yes & Yes & Yes & Yes & Banned \\
 
+PM query options & \compactfeatureref{pm-query-options} &
+    No & No & No & No & Yes \\
+
 Option \t{-{}-host-root} & \compactfeatureref{host-root-option} &
-    No & No & Yes & Yes & Yes \\
+    No & No & Yes & Yes & No \\
 
 \t{die -n} & \compactfeatureref{nonfatal-die} &
     No & No & No & Yes & Yes \\
@@ -396,6 +399,8 @@ EAPI 7 is EAPI 6 with the following changes:
 \item \t{econf} adds \t{-{}-with-sysroot}, \featureref{econf-options}.
 \item \t{BDEPEND}, \featureref{bdepend}.
 \item \t{BROOT}, \featureref{broot}.
+\item \t{best_version} and \t{has_version} drops the \t{-{}-host-root} option in favor of the
+  \t{-b}, \t{-d}, and \t{-r} options, \featureref{pm-query-options}.
 \end{compactitem}
 
 \ChangeWhenAddingAnEAPI{7}
