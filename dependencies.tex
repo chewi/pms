@@ -23,25 +23,27 @@
     \end{tabular}
 \end{centertable}
 
-There are four classes of dependencies supported by ebuilds:
+There are three classes of dependencies supported by ebuilds:
 
 \begin{compactitem}
-\item \featurelabel{bdepend} Build dependencies that are binary compatible
-    with the native build system / CBUILD (\t{BDEPEND}). The ebuild is allowed
-    to execute binary executables installed by this kind of dependency. These must
-    be installed and usable before any of the ebuild \t{src_*} phase functions are
-    executed. These may not be installed at all if a binary package is being
-    merged.
-\item Build dependencies that are binary compatible with the system being built
-    / CHOST (\t{DEPEND}). The ebuild must not execute binary executables installed
-    by this kind of dependency. These must be installed and usable before any of
-    the ebuild \t{src_*} phase functions are executed. These may not be installed
-    at all if a binary package is being merged.
+\item Build dependencies (\t{DEPEND}). These must be installed and usable before any of
+    the ebuild \t{src_*} phase functions is executed. These may not be installed at all
+    if a binary package is being merged.
 \item Runtime dependencies (\t{RDEPEND}). These must be installed and usable before
     the results of an ebuild merging are treated as usable.
 \item Post dependencies (\t{PDEPEND}). These must be installed at some point before
     the package manager finishes the batch of installs.
 \end{compactitem}
+
+\featurelabel{bdepend} Additionally, in EAPIs listed in table~\ref{tab:TODO-make-a-table}
+as supporting \t{BDEPEND}, the build dependencies are split into two subclasses:
+
+\item Build dependencies that are binary compatible with the native build system
+    / CBUILD (\t{BDEPEND}). The ebuild is allowed to call binary executables
+    installed by this kind of dependency.
+\item Build dependencies that are binary compatible with the system being built
+    / CHOST (\t{DEPEND}). The ebuild must not execute binary executables installed
+    by this kind of dependency.
 
 Table~\ref{tab:phase-function-dependency-classes} lists dependencies which must be satisfied before
 a particular phase function is executed.
