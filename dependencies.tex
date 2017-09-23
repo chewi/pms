@@ -23,6 +23,21 @@
     \end{tabular}
 \end{centertable}
 
+\begin{centertable}{Summary of other interfaces related to dependency classes}
+    \label{tab:dependency-class-apis}
+    \begin{tabular}{lccc}
+      \toprule
+      & \t{BDEPEND} & \t{DEPEND} & \t{RDEPEND}, \t{PDEPEND} \\
+      \midrule
+      binary compatible with & \t{CBUILD} & \t{CHOST} & \t{CHOST} \\
+      base unprefixed path & \t{/} & \t{\$\{SYSROOT\}} & \t{\$\{ROOT\}} \\
+      relevant offset-prefix & \t{\$\{BROOT\}} & \t{\$\{EPREFIX\}} & \t{\$\{EPREFIX\}} \\
+      path combined with prefix & \t{\$\{BROOT\}} & \t{\$\{ESYSROOT\}} & \t{\$\{EROOT\}} \\
+      PM query option & \t{-b} & \t{-d} & \t{-r} \\
+      \bottomrule
+    \end{tabular}
+\end{centertable}
+
 There are three classes of dependencies supported by ebuilds:
 
 \begin{compactitem}
@@ -48,7 +63,8 @@ as supporting \t{BDEPEND}, the build dependencies are split into two subclasses:
 \end{compactitem}
 
 Table~\ref{tab:phase-function-dependency-classes} lists dependencies which must be satisfied before
-a particular phase function is executed.
+a particular phase function is executed. Table~\ref{tab:dependency-class-api} summarizes
+additional interfaces related to the dependency classes.
 
 In addition, \t{SRC_URI}, \t{HOMEPAGE}, \t{RESTRICT}, \t{PROPERTIES}, \t{LICENSE} and
 \t{REQUIRED_USE} use dependency-style specifications to specify their values.
