@@ -41,6 +41,9 @@ of this document for a complete table of previous EAPIs.
 \bottomrule
 \endlastfoot
 
+Trailing slash in \t{ROOT}, \t{D}... & \compactfeatureref{trailing-slash} &
+    Yes & Yes & Yes & Yes & No \\
+
 Output cmds can use stdout & \compactfeatureref{output-no-stdout} &
     Yes & Yes & Yes & Yes & No \\
 
@@ -395,6 +398,8 @@ EAPI 7 is EAPI 6 with the following changes:
 \item Version manipulation and comparison functions added, \featureref{ver-functions}.
 \item \t{eqawarn} added, \featureref{eqawarn}.
 \item Output commands can no longer use stdout, \featureref{output-no-stdout}.
+\item \t{ROOT}, \t{EROOT}, \t{D}, \t{ED} no longer end with a trailing slash,
+    \featureref{trailing-slash}.
 \end{compactitem}
 
 \ChangeWhenAddingAnEAPI{7}
