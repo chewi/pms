@@ -124,6 +124,10 @@ stderr or some other appropriate facility.
     example.
 \item[ewarn] Displays a warning message. Must not go to stdout.
 \item[eerror] Displays an error message. Must not go to stdout.
+\item[eqawarn] \featurelabel{eqawarn} Display a QA warning message intended for ebuild developers.
+    The package manager may provide appropriate mechanisms to skip those messages for normal users.
+    Must not go to stdout.  Only available in EAPIs listed in table~\ref{tab:output-commands} as
+    supporting \t{eqawarn}.
 \item[ebegin] Displays an informational message. Should be used when beginning a possibly
     lengthy process, and followed by a call to \t{eend}.
 \item[eend] Indicates that the process begun with an \t{ebegin} message has completed. Takes one
@@ -131,6 +135,20 @@ stderr or some other appropriate facility.
     arguments. If the first argument is 0, prints a success indicator; otherwise, prints the
     message followed by a failure indicator. Returns its first argument as exit status.
 \end{description}
+
+\ChangeWhenAddingAnEAPI{7}
+\begin{centertable}{Output commands for EAPIs}
+    \label{tab:output-commands}
+    \begin{tabular}{ll}
+      \toprule
+      \multicolumn{1}{c}{\textbf{EAPI}} &
+      \multicolumn{1}{c}{\textbf{\t{eqawarn}?}} \\
+      \midrule
+      0, 1, 2, 3, 4, 5, 6  & No  \\
+      7                    & Yes \\
+      \bottomrule
+    \end{tabular}
+\end{centertable}
 
 \subsubsection{Error commands}
 These commands are used when an error is detected that will prevent the build process from
