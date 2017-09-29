@@ -41,6 +41,9 @@ of this document for a complete table of previous EAPIs.
 \bottomrule
 \endlastfoot
 
+\t{die} in subshell & \compactfeatureref{subshell-die} &
+    No & No & No & No & Yes \\
+
 \t{nonfatal} function+command & \compactfeatureref{nonfatal-fallback} &
     No & No & No & No & Yes \\
 
@@ -459,6 +462,7 @@ EAPI 7 is EAPI 6 with the following changes:
 \item \t{dolib} and \t{libopts} banned, \featureref{banned-commands}.
 \item \t{nonfatal} defined both as a shell function and external command,
   \featureref{nonfatal-fallback}.
+\item \t{die} guaranteed to work in a subshell environment, \featureref{subshell-die}.
 \end{compactitem}
 
 \ChangeWhenAddingAnEAPI{7}
