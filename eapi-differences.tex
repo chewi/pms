@@ -41,6 +41,9 @@ of this document for a complete table of previous EAPIs.
 \bottomrule
 \endlastfoot
 
+\t{nonfatal} function+command & \compactfeatureref{nonfatal-fallback} &
+    No & No & No & No & Yes \\
+
 \t{domo} install path & \compactfeatureref{domo-path} &
     \t{\$\{DESTTREE\}\slash share\slash locale} &
     \t{\$\{DESTTREE\}\slash share\slash locale} &
@@ -454,6 +457,8 @@ EAPI 7 is EAPI 6 with the following changes:
 \item \t{ECLASSDIR} removed, \featureref{eclassdir}.
 \item \t{domo} installs to \t{/usr/share/locale}, ignoring \t{into}, \featureref{domo-path}.
 \item \t{dolib} and \t{libopts} banned, \featureref{banned-commands}.
+\item \t{nonfatal} defined both as a shell function and external command,
+  \featureref{nonfatal-fallback}.
 \end{compactitem}
 
 \ChangeWhenAddingAnEAPI{7}
